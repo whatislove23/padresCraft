@@ -1,0 +1,36 @@
+@import "../../stylesheets/variables.less";
+
+.productsGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 254px);
+  row-gap: 30px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.pagination {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  div {
+    display: flex;
+    gap: 15px;
+    button {
+      border: 1px solid @main-black;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: transparent;
+      font-size: 20px;
+      color: @main-black;
+    }
+    .current {
+      background-color: @orange;
+    }
+  }
+}

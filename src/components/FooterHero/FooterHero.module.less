@@ -1,0 +1,40 @@
+@import "../../stylesheets/variables.less";
+
+.bg {
+  background: url("../../assets/images/footer-bg.png") 0 0 / cover no-repeat;
+  width: 100%;
+  height: 404px;
+  .heroBlur {
+    padding: 120px 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      h2 {
+        font-size: 40px;
+        color: #ffffff;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 20px;
+        font-weight: 300;
+        color: #ffffff;
+        span {
+          color: @orange;
+        }
+      }
+    }
+  }
+}

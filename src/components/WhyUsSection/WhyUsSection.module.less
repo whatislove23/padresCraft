@@ -1,0 +1,28 @@
+@import "../../stylesheets/variables.less";
+.content {
+  margin: 75px auto 0 auto;
+  max-width: 928px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 36px;
+  flex-wrap: wrap;
+  .card {
+    width: 447px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      h3 {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+    p {
+      color: @text-second;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../stylesheets/variables.less";
+.header {
+  height: 80px;
+  background-color: @main-black;
+  position: relative;
+}
+.headerContent {
+  color: @text-white;
+  height: 80px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  color: @text-white;
+  font-size: 20px;
+  span {
+    font-weight: 500px;
+  }
+}
+.nav {
+  display: flex;
+  gap: 30px;
+  a,
+  p {
+    color: @text-white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+}

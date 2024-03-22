@@ -1,0 +1,62 @@
+@import "../stylesheets/variables.less";
+.wrapGap {
+  display: flex;
+  flex-direction: column;
+  margin: 150px 0;
+}
+.form {
+  margin: 75px 0 40px 0;
+  gap: 30px;
+  display: flex;
+}
+.inputWrap {
+  height: 45px;
+  width: 352px;
+  border: 1px solid @main-black;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  input {
+    padding: 10px;
+    border: none;
+    height: 100%;
+    width: 100%;
+    &::placeholder {
+      color: #6b6b6b;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.buttonsWrap {
+  display: flex;
+  gap: 15px;
+}
+.buttonContainer {
+  border: 1px solid @main-black;
+  width: 45px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+  label {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+  input[type="radio"] {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10;
+    cursor: pointer;
+    position: absolute;
+    &:checked + label {
+      background-color: @orange;
+    }
+  }
+}

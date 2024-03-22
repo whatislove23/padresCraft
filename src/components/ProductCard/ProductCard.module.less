@@ -1,0 +1,41 @@
+@import "../../stylesheets/variables.less";
+.card {
+  height: 372px;
+  .cardContent {
+    border: 1px solid @main-black;
+    padding: 10px;
+    width: 254px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    h3 {
+      font-size: 19px;
+    }
+    p {
+      font-weight: 300;
+    }
+    div {
+      width: 100%;
+      height: 234px;
+      overflow: hidden;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    a {
+      display: none;
+      font-size: 16px;
+      width: 100%;
+      height: 43px;
+    }
+    &:hover {
+      border: 1px solid @orange;
+      a {
+        display: block;
+      }
+    }
+  }
+}
