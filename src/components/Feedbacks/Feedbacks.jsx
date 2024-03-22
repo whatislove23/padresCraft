@@ -1,27 +1,30 @@
 import Container from "../Container/Container.jsx";
 import SectionTitle from "../SectionTitle/SectionTitle.jsx";
 import styles from "../Feedbacks/Feedbacks.module.less";
+import mask from "../../assets/images/mask.png";
+import flask from "../../assets/images/flask.png";
+import bag from "../../assets/images/bag4.png";
 const items = [
   {
     id: 1,
     name: "Андрій",
     feedback:
       "Шкіряна маска чумного доктора від Padres Craft - просто вражає! Це ідеальний аксесуар для ролевих ігор або тематичних вечірок. Вражений якістю та дизайном!",
-    img: "src/assets/images/mask.png",
+    img: mask,
   },
   {
     id: 2,
     name: "Марія",
     feedback:
       "Фляга від Padres Craft - ідеальний спутник для подорожей та пригод. Вражаюча якість і дизайн!",
-    img: "src/assets/images/flask.png",
+    img: flask,
   },
   {
     id: 3,
     name: "Наталія",
     feedback:
       "Ця червона поясна сумка від Padres Craft - просто крута! Практична та стильна, вона точно прикрасить мій образ.",
-    img: "src/assets/images/bag4.png",
+    img: bag,
   },
 ];
 export default function Feedbacks() {

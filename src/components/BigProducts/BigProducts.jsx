@@ -2,6 +2,9 @@ import Container from "../Container/Container.jsx";
 import SectionTitle from "../SectionTitle/SectionTitle.jsx";
 import styles from "../BigProducts/BigProducts.module.less";
 import Button from "../Button/Button.jsx";
+import dwarf from "../../assets/images/dwarf.png";
+import gorj2 from "../../assets/images/gorj2.png";
+
 export default function BigProducts() {
   return (
     <section>
@@ -10,7 +13,7 @@ export default function BigProducts() {
         <div className={styles.content}>
           <div className={styles.cardRight}>
             <div className={styles.imgWrap}>
-              <img src="src/assets/images/dwarf.png" alt="" />
+              <img src={dwarf} alt="Костюм дварфа" />
             </div>
             <div className={styles.textCol}>
               <div>
@@ -38,7 +41,7 @@ export default function BigProducts() {
           </div>
           <div className={styles.cardLeft}>
             <div className={styles.imgWrap}>
-              <img src="src/assets/images/gorj2.png" alt="" />
+              <img src={gorj2} alt="Горжет & Наплічники" />
             </div>
             <div className={styles.textCol}>
               <div>
