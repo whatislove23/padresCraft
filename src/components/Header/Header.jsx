@@ -5,15 +5,15 @@ import { ReactComponent as Phone } from "../../assets/svg/phone.svg";
 import { ReactComponent as Shop } from "../../assets/svg/shop.svg";
 import { ReactComponent as CartIcon } from "../../assets/svg/cart.svg";
 import Cart from "../Cart/Cart";
-import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { open } from "../../store/cartSlice";
 export default function Header() {
-  const [isCartOpened, setIsOpened] = useState(false);
+  const { isOpen, items } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   return (
     <header className={styles.header}>
-      {isCartOpened && (
-        <Cart setIsOpened={setIsOpened} isOpened={isCartOpened} />
-      )}
+      {isOpen && <Cart />}
       <Container>
         <div className={styles.headerContent}>
           <Link to="/" className={styles.logo}>
@@ -28,14 +28,15 @@ export default function Header() {
               <span>Товари</span>
               <Shop />
             </Link>
-            <p
-              onClick={() => {
-                setIsOpened(true);
-              }}
-            >
-              <span>Корзина</span>
-              <CartIcon />
-            </p>
+            <div onClick={() => dispatch(open())}>
+              <p>Корзина</p>
+              <div className={styles.cartCircleContainer}>
+                {items.length ? (
+                  <p className={styles.circle}>{items.length}</p>
+                ) : null}
+                <CartIcon />
+              </div>
+            </div>
           </nav>
         </div>
       </Container>

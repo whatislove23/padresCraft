@@ -1,0 +1,94 @@
+@import "../../stylesheets/variables.less";
+.card {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid @orange;
+  padding: 10px;
+
+  .cardCol {
+    width: 317px;
+    flex-direction: column;
+
+    display: flex;
+    gap: 5px;
+    .row {
+      gap: 10px;
+      display: flex;
+      justify-content: space-between;
+      .colLeft {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        border-right: 1px solid @main-black;
+        padding-right: 10px;
+      }
+    }
+    .cardTitle {
+      height: 20px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 24px;
+        color: @main-black;
+        font-weight: 500;
+        line-height: 21px;
+      }
+      svg {
+        overflow: visible;
+      }
+    }
+  }
+  .imageWrapper {
+    width: 132px;
+    height: 132px;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: @main-black;
+    font-size: 16px;
+    font-weight: 300;
+    .colorCircle {
+      width: 20px;
+      height: 20px;
+      background-color: aqua;
+      border-radius: 100%;
+    }
+  }
+  .price {
+    font-size: 20px;
+    span {
+      font-weight: 300;
+    }
+  }
+  .cardButtons {
+    font-size: 20px;
+    font-weight: 300;
+    color: @main-black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 100px;
+    height: 100%;
+    button {
+      background-color: @orange;
+      cursor: pointer;
+      border: none;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+    }
+  }
+}

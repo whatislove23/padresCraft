@@ -21,7 +21,7 @@ function ProductCard(props) {
 ProductCard.propTypes = {
   img: PropTypes.string,
   title: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   id: PropTypes.number,
 };
 

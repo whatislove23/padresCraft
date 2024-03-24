@@ -2,24 +2,53 @@ import styles from "../Cart/Cart.module.less";
 import { ReactComponent as Cross } from "../../assets/svg/cross.svg";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
-export default function Cart({ isOpened, setIsOpened }) {
+import CartCard from "../CartCard/CartCard";
+import { useSelector, useDispatch } from "react-redux";
+import { close, getTotalPrice } from "../../store/cartSlice";
+import Button from "../Button/Button";
+export default function Cart() {
+  const { isOpen, items, total } = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTotalPrice());
+  }, [items]);
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    dispatch(getTotalPrice());
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isOpened]);
+  }, [isOpen]);
   return (
     <div
       className={styles.cartWrapper}
       onClick={() => {
-        setIsOpened(false);
+        dispatch(close());
       }}
     >
       <div className={styles.cartContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.cartTitle}>
           <h2>Корзина</h2>
-          <Cross onClick={() => setIsOpened(false)} />
+          <Cross onClick={() => dispatch(close())} />
+        </div>
+        <div className={styles.cartList}>
+          {items.map((data) => (
+            <CartCard key={data.id} {...data} />
+          ))}
+        </div>
+        <div className={styles.checkout}>
+          Загальна ціна: {total}₴{" "}
+          <Button
+            style={{
+              fontSize: "16px",
+              padding: "10px 10px",
+              height: "56px",
+              width: "220px",
+            }}
+          >
+            Зробити замовлення
+          </Button>
         </div>
       </div>
     </div>

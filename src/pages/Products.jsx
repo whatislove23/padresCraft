@@ -11,15 +11,64 @@ import { tempData } from "../temp/data";
 import ProductsGrid from "../components/ProductsGrid/ProductsGrid";
 
 export default function Products() {
+  document.title = "PadresCraft  Товари";
+
   const [search, setSearch] = useState("");
   const [sortBy, setSort] = useState("alphabet_down");
   const [data, setData] = useState(tempData);
 
+  function dataSortBy(sortBy) {
+    const alphabetDown = () =>
+      [...data].sort((el, el2) => {
+        if (el.title > el2.title) return 1;
+        if (el.title < el2.title) return -1;
+        return 0;
+      });
+    const alphabetUp = () =>
+      [...data].sort((el, el2) => {
+        if (el.title < el2.title) return 1;
+        if (el.title > el2.title) return -1;
+        return 0;
+      });
+    const priceDown = () =>
+      [...data].sort((el, el2) => {
+        if (el.price < el2.price) return 1;
+        if (el.price > el2.price) return -1;
+        return 0;
+      });
+    const priceUp = () =>
+      [...data].sort((el, el2) => {
+        if (el.price > el2.price) return 1;
+        if (el.price < el2.price) return -1;
+        return 0;
+      });
+    switch (sortBy) {
+      case "alphabet_down":
+        setData(alphabetDown());
+        break;
+      case "alphabet_up":
+        setData(alphabetUp());
+        break;
+      case "price_down":
+        setData(priceDown());
+        break;
+      case "price_up":
+        setData(priceUp());
+        break;
+      default:
+        break;
+    }
+  }
+
+  useEffect(() => {
+    dataSortBy(sortBy);
+  }, [sortBy]);
   useEffect(() => {
     let res = data.filter((el) =>
       el.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
     );
     setData(res);
+    setSort("none");
     if (search == "") setData(tempData);
   }, [search, data]);
 
@@ -49,7 +98,7 @@ export default function Products() {
                 id="alphabet_down"
                 value="alphabet_down"
                 checked={sortBy === "alphabet_down"}
-                onChange={(e) => setSort(e.target.value)}
+                onChange={() => setSort("alphabet_down")}
               />
               <label htmlFor="alphabet_down">
                 <AlphabetDown />
@@ -62,7 +111,7 @@ export default function Products() {
                 id="alphabet_up"
                 value="alphabet_up"
                 checked={sortBy === "alphabet_up"}
-                onChange={(e) => setSort(e.target.value)}
+                onChange={() => setSort("alphabet_up")}
               />
               <label htmlFor="alphabet_up">
                 <AlphabetUp />
@@ -75,7 +124,7 @@ export default function Products() {
                 id="price_down"
                 value="price_down"
                 checked={sortBy === "price_down"}
-                onChange={(e) => setSort(e.target.value)}
+                onChange={() => setSort("price_down")}
               />
               <label htmlFor="price_down">
                 <PriceDown />
@@ -88,7 +137,7 @@ export default function Products() {
                 id="price_up"
                 value="price_up"
                 checked={sortBy === "price_up"}
-                onChange={(e) => setSort(e.target.value)}
+                onChange={() => setSort("price_up")}
               />
               <label htmlFor="price_up">
                 <PriceUp />

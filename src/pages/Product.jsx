@@ -9,14 +9,32 @@ import CheckBox from "../components/CheckBox/CheckBox";
 import FooterHero from "../components/FooterHero/FooterHero";
 import { ReactComponent as Phone } from "../assets/svg/phone.svg";
 import { ReactComponent as RightArrow } from "../assets/svg/slider-arrow-right.svg";
-
+import { useDispatch } from "react-redux";
+import { add } from "../store/cartSlice";
 function Product() {
   const { id } = useParams();
+  let product = tempData.find((el) => el.id == id);
+  document.title = `PadresCraft ${product.title}`;
+  const dispatch = useDispatch();
   const [leaterColor, setLeatherColor] = useState("#55261C");
   const [furnitureColor, setFurnitureColor] = useState("#B1B1B1");
   const [isGrav, setGrav] = useState(false);
   //temporary
-  let product = tempData.find((el) => el.id == id);
+  const addToCart = () => {
+    dispatch(
+      add({
+        id,
+        price: product.price,
+        leather_color: leaterColor,
+        furniture_color: furnitureColor,
+        title: product.title,
+        amount: 1,
+        image: product.img,
+        engraving: isGrav,
+      })
+    );
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -83,7 +101,7 @@ function Product() {
                 <div className={styles.contentRow}>
                   <span>Ціна: ₴{product.price}</span>
                 </div>
-                <Button>Додати до кошика</Button>
+                <Button onClick={addToCart}>Додати до кошика</Button>
               </div>
               <p>{product.description}</p>
             </div>

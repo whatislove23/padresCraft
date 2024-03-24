@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -8,6 +7,9 @@ import "./stylesheets/main.less";
 import Footer from "./components/Footer/Footer";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +44,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </Provider>
 );

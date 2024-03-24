@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "../Button/Button.module.less";
 import PropTypes from "prop-types";
 
@@ -16,9 +16,9 @@ export default function Button({ to, shadow, children, ...props }) {
       break;
   }
   return (
-    <Link to={to} {...props} className={style}>
+    <NavLink to={to} {...props} className={style}>
       {children}
-    </Link>
+    </NavLink>
   );
 }
 Button.propTypes = {
