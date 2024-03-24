@@ -10,9 +10,6 @@ export default function ProductsGrid({ data }) {
   const totalCards = data.length;
   const totalPages = Math.ceil(totalCards / cardsPerPage);
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    });
     function pagination() {
       const startIndex = currentPage * cardsPerPage;
       const endIndex = Math.min((currentPage + 1) * cardsPerPage, totalCards);

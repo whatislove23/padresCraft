@@ -16,8 +16,7 @@ export default function Products() {
   const [search, setSearch] = useState("");
   const [sortBy, setSort] = useState("alphabet_down");
   const [data, setData] = useState(tempData);
-
-  function dataSortBy(sortBy) {
+  function dataSortBy() {
     const alphabetDown = () =>
       [...data].sort((el, el2) => {
         if (el.title > el2.title) return 1;
@@ -59,18 +58,18 @@ export default function Products() {
         break;
     }
   }
+  useEffect(() => {
+    dataSortBy();
+  }, [sortBy]);
 
   useEffect(() => {
-    dataSortBy(sortBy);
-  }, [sortBy]);
-  useEffect(() => {
-    let res = data.filter((el) =>
-      el.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    const filteredData = tempData.filter((el) =>
+      el.title.toLowerCase().includes(search.toLowerCase())
     );
-    setData(res);
+    setData(filteredData);
     setSort("none");
-    if (search == "") setData(tempData);
-  }, [search, data]);
+    if (search === "") setData(tempData);
+  }, [search]);
 
   return (
     <div className={styles.wrapGap}>
