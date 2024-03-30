@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import _ from "lodash";
 const storedCart = localStorage.getItem("cart");
 const initialState = {
   items: storedCart ? JSON.parse(storedCart) : [],
@@ -17,13 +17,13 @@ const cartSlice = createSlice({
       state.isOpen = false;
     },
     add: (state, action) => {
-      let element = state.items.find((el) => el.id == action.payload.id);
+      let element = state.items.find((el) => _.isEqual(el, action.payload));
+
       if (element) {
         state.items = state.items.map((element) => {
-          if (element.id == action.payload.id) {
+          if (_.isEqual(element, action.payload)) {
             return {
               ...element,
-              ...action.payload,
               amount: (element.amount += 1),
             };
           }
@@ -33,16 +33,18 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.items));
     },
     decrease: (state, action) => {
-      let element = state.items.find((el) => el.id == action.payload.id);
+      let element = state.items.find((el) => _.isEqual(el, action.payload));
       if (element) {
         if (element.amount == 1) {
-          let items = state.items.filter((item) => item.id !== element.id);
+          let items = state.items.filter(
+            (item) => !_.isEqual(item, action.payload)
+          );
           localStorage.setItem("cart", JSON.stringify(items));
           state.items = items;
           return;
         }
         state.items = state.items.map((element) => {
-          if (element.id == action.payload.id) {
+          if (_.isEqual(element, action.payload)) {
             return {
               ...element,
               amount: (element.amount -= 1),
@@ -54,11 +56,13 @@ const cartSlice = createSlice({
       }
     },
     remove: (state, action) => {
-      let items = state.items.filter((item) => item.id !== action.payload);
+      let items = state.items.filter(
+        (item) => !_.isEqual(item, action.payload)
+      );
       localStorage.setItem("cart", JSON.stringify(items));
       state.items = items;
     },
-    getTotalPrice: (state, action) => {
+    getTotalPrice: (state) => {
       let res = state.items.reduce(
         (acc, cur) => acc + cur.amount * cur.price,
         0

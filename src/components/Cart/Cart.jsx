@@ -6,6 +6,7 @@ import CartCard from "../CartCard/CartCard";
 import { useSelector, useDispatch } from "react-redux";
 import { close, getTotalPrice } from "../../store/cartSlice";
 import Button from "../Button/Button";
+import { v4 as uuidv4 } from "uuid";
 export default function Cart() {
   const { isOpen, items, total } = useSelector((state) => state.cart);
 
@@ -34,11 +35,11 @@ export default function Cart() {
         </div>
         <div className={styles.cartList}>
           {items.map((data) => (
-            <CartCard key={data.id} {...data} />
+            <CartCard key={uuidv4()} {...data} />
           ))}
         </div>
         <div className={styles.checkout}>
-          Загальна ціна: {total}₴{" "}
+          Загальна ціна: {total}₴
           <Button
             style={{
               fontSize: "16px",

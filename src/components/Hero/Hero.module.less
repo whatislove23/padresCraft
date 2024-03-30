@@ -16,9 +16,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   margin: 0 auto;
   color: @text-white;
+  a {
+    width: 352px;
+  }
   div {
     display: flex;
     flex-direction: column;
@@ -35,6 +37,41 @@
     }
     span {
       color: @orange;
+    }
+    a {
+      width: 352px;
+    }
+  }
+  @media (max-width: 900px) {
+    div {
+      h1 {
+        font-size: 27px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+    a {
+      width: 337px;
+      height: 56px;
+    }
+  }
+  @media (max-width: 425px) {
+    div {
+      gap: 30px;
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+    a {
+      width: fit-content;
+      height: 43px;
+      font-size: 16px;
+      padding: 10px 25px;
     }
   }
 }

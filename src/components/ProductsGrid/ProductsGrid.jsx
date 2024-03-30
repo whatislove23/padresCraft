@@ -1,18 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import ArrowButton from "../ArrowButton/ArrowButton";
 import styles from "../ProductsGrid/ProductsGrid.module.less";
 import PropTypes from "prop-types";
+
 export default function ProductsGrid({ data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
-  const cardsPerPage = 16;
+  const cardsPerPage = useRef(16);
   const totalCards = data.length;
-  const totalPages = Math.ceil(totalCards / cardsPerPage);
+  const totalPages = Math.ceil(totalCards / cardsPerPage.current);
   useEffect(() => {
+    let width = document.body.clientWidth;
+    cardsPerPage.current = 16;
+    if (width <= 680) {
+      cardsPerPage.current = 10;
+      return;
+    }
+    if (width <= 1090) {
+      cardsPerPage.current = 15;
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
     function pagination() {
-      const startIndex = currentPage * cardsPerPage;
-      const endIndex = Math.min((currentPage + 1) * cardsPerPage, totalCards);
+      const startIndex = currentPage * cardsPerPage.current;
+      const endIndex = Math.min(
+        (currentPage + 1) * cardsPerPage.current,
+        totalCards
+      );
       setCurrentItems(data.slice(startIndex, endIndex));
     }
     pagination();
