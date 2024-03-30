@@ -5,7 +5,6 @@ import { add, decrease, remove } from "../../store/cartSlice";
 export default function CartCard(props) {
   const dispatch = useDispatch();
   const {
-    id,
     price,
     leather_color,
     furniture_color,
@@ -24,7 +23,7 @@ export default function CartCard(props) {
         <div className={styles.cardTitle}>
           <h2>{title}</h2>
           <Cross
-            onClick={() => dispatch(remove(id))}
+            onClick={() => dispatch(remove(props))}
             viewBox="0 0 40 40"
             width="20"
             height="20"
@@ -54,7 +53,7 @@ export default function CartCard(props) {
           <div className={styles.cardButtons}>
             <button
               onClick={() => {
-                dispatch(add({ id }));
+                dispatch(add(props));
               }}
             >
               +
@@ -62,7 +61,7 @@ export default function CartCard(props) {
             {amount}
             <button
               onClick={() => {
-                dispatch(decrease({ id }));
+                dispatch(decrease(props));
               }}
             >
               -

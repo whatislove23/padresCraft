@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import ArrowButton from "../ArrowButton/ArrowButton.jsx";
 import { tempData } from "../../temp/data.js";
+
 function OtherProducts() {
   const [step, setStep] = useState(0);
   const [items, setItems] = useState(tempData.slice(step, step + 3));
@@ -22,15 +23,27 @@ function OtherProducts() {
     }
     handleSlider();
   }, [step]);
+
+  useEffect(() => {
+    let intervalID = setInterval(() => {
+      moveForward();
+    }, 5000);
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, []);
+
   return (
     <section>
       <Container>
         <SectionTitle>Інші товари</SectionTitle>
         <div className={styles.content}>
           <ArrowButton type="left" onClick={moveBackward} />
-          {items.map((data) => (
-            <ProductCard {...data} key={data.id} />
-          ))}
+          <div className={styles.sliderGrid}>
+            {items.map((data) => (
+              <ProductCard {...data} key={data.id} />
+            ))}
+          </div>
           <ArrowButton type="right" onClick={moveForward} />
         </div>
       </Container>

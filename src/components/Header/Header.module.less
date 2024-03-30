@@ -15,8 +15,9 @@
 .logo {
   color: @text-white;
   font-size: 20px;
+  font-weight: 500;
   span {
-    font-weight: 500px;
+    font-weight: 400;
   }
 }
 .nav {
@@ -52,6 +53,40 @@
       background-color: #f90e0e;
       border-radius: 100%;
       border: 1px solid @main-black;
+    }
+  }
+  .burger {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    a,
+    div,
+    p {
+      span,
+      p {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 570px) {
+  .headerContent {
+    .logo {
+      span {
+        display: none;
+      }
+    }
+  }
+  .nav {
+    gap: 40px;
+    a {
+      display: none;
+    }
+    .burger {
+      display: block;
     }
   }
 }

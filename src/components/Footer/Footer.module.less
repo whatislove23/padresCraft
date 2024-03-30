@@ -1,31 +1,117 @@
 @import "../../stylesheets/variables.less";
 .footer {
-  margin-top: auto;
+  // margin-top: auto;
   background-color: @main-black;
   height: 100px;
-  div {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    .logo {
-      color: @text-white;
-      font-size: 20px;
-      span {
-        font-weight: 500px;
+  display: flex;
+  align-items: center;
+  .footerWrap {
+    div {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+      .links {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo {
+        color: @text-white;
+        font-size: 20px;
+        font-weight: 500;
+        span {
+          font-weight: 300;
+        }
+      }
+      p {
+        color: white;
+        display: flex;
+        align-items: center;
+      }
+      a {
+        color: @text-white;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      a > span + svg {
+        display: none;
       }
     }
     p {
       color: white;
-      display: flex;
-      align-items: center;
-      gap: 55px;
+      display: none;
     }
-    a {
-      color: @text-white;
-      font-size: 20px;
-      text-decoration: none;
+  }
+  @media (max-width: 960px) {
+    .footerWrap {
+      div {
+        .logo {
+          width: 181px;
+        }
+        p {
+          width: 281px;
+        }
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    .footerWrap {
+      div {
+        p {
+          width: 281px;
+        }
+        a > span + svg {
+          display: block;
+        }
+        a > span {
+          display: none;
+        }
+        .links {
+          gap: 50px;
+        }
+        .logo {
+          width: 181px;
+          font-size: 16px;
+          span {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 570px) {
+    .footerWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      div {
+        p {
+          width: 281px;
+          display: none;
+        }
+        a > span + svg {
+          display: block;
+        }
+        a > span {
+          display: none;
+        }
+        .links {
+          gap: 50px;
+        }
+        .logo {
+          span {
+            display: none;
+          }
+        }
+      }
+      .moibleRights {
+        display: block;
+        font-size: 12px;
+        font: weight 200;
+      }
     }
   }
 }

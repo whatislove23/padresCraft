@@ -17,9 +17,7 @@ export default function Hero() {
                 <span> Padres Craft </span>
               </p>
             </div>
-            <Button to="/products" style={{ width: "352px" }}>
-              Переглянути товари
-            </Button>
+            <Button to="/products">Переглянути товари</Button>
           </div>
         </Container>
       </div>

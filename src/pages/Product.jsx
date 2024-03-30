@@ -11,6 +11,7 @@ import { ReactComponent as Phone } from "../assets/svg/phone.svg";
 import { ReactComponent as RightArrow } from "../assets/svg/slider-arrow-right.svg";
 import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
+
 function Product() {
   const { id } = useParams();
   let product = tempData.find((el) => el.id == id);
@@ -19,11 +20,10 @@ function Product() {
   const [leaterColor, setLeatherColor] = useState("#55261C");
   const [furnitureColor, setFurnitureColor] = useState("#B1B1B1");
   const [isGrav, setGrav] = useState(false);
-  //temporary
+
   const addToCart = () => {
     dispatch(
       add({
-        id,
         price: product.price,
         leather_color: leaterColor,
         furniture_color: furnitureColor,
@@ -40,6 +40,7 @@ function Product() {
       top: 0,
     });
   }, []);
+
   return (
     <div>
       <Container>

@@ -1,0 +1,59 @@
+@import "../../stylesheets/variables.less";
+.cartContent {
+  position: absolute;
+  z-index: 10;
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  cursor: default;
+  .cartTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      width: 100%;
+      text-align: center;
+      color: @main-black;
+      font-size: 32px;
+      font-weight: 500;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+  .links {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+.link {
+  width: fit-content;
+  position: relative;
+  color: @main-black;
+  font-size: 32px;
+  font-weight: 500;
+}
+.active {
+  .link;
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%; // Adjust as needed
+    height: 1px;
+    background-color: black;
+  }
+  &::before {
+    top: 100%;
+  }
+  &::after {
+    bottom: 0;
+  }
+}

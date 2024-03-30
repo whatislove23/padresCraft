@@ -5,11 +5,9 @@
   width: 100%;
   border: 1px solid @orange;
   padding: 10px;
-
   .cardCol {
-    width: 317px;
+    flex-grow: 1;
     flex-direction: column;
-
     display: flex;
     gap: 5px;
     .row {
@@ -56,13 +54,13 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: @main-black;
     font-size: 16px;
     font-weight: 300;
     .colorCircle {
       width: 20px;
       height: 20px;
-      background-color: aqua;
       border-radius: 100%;
     }
   }
@@ -89,6 +87,30 @@
       width: 20px;
       height: 20px;
       line-height: 20px;
+    }
+  }
+  @media (max-width: 544px) {
+    align-items: center;
+    .cardCol {
+      flex-grow: 1;
+    }
+    .cardButtons {
+      height: auto;
+      justify-content: space-between;
+    }
+    .imageWrapper {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  @media (max-width: 382px) {
+    flex-direction: column;
+    .cardCol {
+      width: 100%;
+    }
+    .options {
+      align-items: start;
+      gap: 10px;
     }
   }
 }

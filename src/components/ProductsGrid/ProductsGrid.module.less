@@ -3,11 +3,42 @@
 .productsGrid {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 254px);
+  grid-template-columns: repeat(4, minmax(240px, 254px));
   row-gap: 30px;
   justify-content: space-between;
+  justify-items: stretch;
   margin-bottom: 30px;
+  @media (max-width: 1090px) {
+    grid-template-columns: repeat(3, minmax(200px, 242px));
+    gap: 10px;
+  }
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(2, minmax(200px, 100%));
+    a div {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+    //div
+    a {
+      height: auto;
+    }
+    //div
+    a div div {
+      height: 275px !important; //я осознаю, що це погано =)
+    }
+  }
 }
+@media (max-width: 900px) {
+  .productsGrid {
+    // div div a
+    a div button {
+      display: block !important; //я осознаю, що це погано =)
+    }
+  }
+}
+
 .pagination {
   margin: 0 auto;
   display: flex;
