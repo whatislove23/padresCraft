@@ -26,6 +26,7 @@ export default function ProductsGrid({ data }) {
   useEffect(() => {
     window.scrollTo({
       top: 0,
+      behavior: "smooth",
     });
     function pagination() {
       const startIndex = currentPage * cardsPerPage.current;
